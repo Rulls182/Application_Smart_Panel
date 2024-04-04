@@ -9,12 +9,12 @@
     android:background="@color/background">
 
     <ImageView
-        android:layout_width="583dp"
+        android:id="@+id/img_1"
+        android:layout_width="427dp"
         android:layout_height="583dp"
         android:layout_alignParentStart="true"
         android:layout_marginStart="-16dp"
-        android:src="@drawable/gambar1"
-        android:id="@+id/img_1" />
+        android:src="@drawable/gambar1" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_height="274dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/txt1"
-        android:src="@drawable/gambar2"
+        android:src="@drawable/logo"
         android:id="@+id/img_2"/>
 
     <TextView
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/img_2"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="62dp"
         android:gravity="center"
         android:padding="30sp"
         android:text="@string/long_text"
@@ -52,7 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txt2"
         android:layout_centerHorizontal="true"
-        android:width="300dp"
+        android:width="150dp"
         android:text="next"
         android:textColor="@color/white"
         android:textSize="24sp"

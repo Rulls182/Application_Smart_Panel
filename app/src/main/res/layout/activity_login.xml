@@ -15,7 +15,7 @@
             android:layout_height="583dp"
             android:layout_alignParentStart="true"
             android:layout_marginStart="-16dp"
-            android:src="@drawable/gambar3" />
+            android:src="@drawable/gambar2" />
 
         <TextView
             android:id="@+id/txt1"
@@ -34,7 +34,7 @@
             android:layout_height="274dp"
             android:layout_below="@id/txt1"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/gambar2" />
+            android:src="@drawable/logo" />
 
         <LinearLayout
             android:id="@+id/form"
@@ -80,7 +80,6 @@
         android:layout_marginTop="20dp"
         android:width="15dp"
         android:background="@drawable/button_shape"
-        android:backgroundTint="@color/primary"
         android:fontFamily="@font/poppinssemibold"
         android:layout_centerHorizontal="true"
         android:text="@string/login"
