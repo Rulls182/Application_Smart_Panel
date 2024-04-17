@@ -10,4 +10,9 @@
     <string name="registered2">Dont have an account?</string>
     <string name="email">Email</string>
     <string name="have_account">Already have an account?</string>
+    <string name="title">Smart Panel IoT Device</string>
+    <string name="room1">Room 1</string>
+    <string name="room2">Room 2</string>
+    <string name="lamp">Lamp</string>
+    <string name="temperature">Temperature</string>
 </resources>

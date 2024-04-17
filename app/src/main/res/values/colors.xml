@@ -6,5 +6,9 @@
     <color name="red">#FE3232</color>
     <color name="tint">#000000</color>
     <color name="primary">#756AB6</color>
-
+    <color name="green">#34C759</color>
+    <color name="gray">#8C8C8C</color>
+    <color name="blue">#0000FF</color>
+    <color name="yellow">#FFF500</color>
+    <color name="brown">#7C7D6F</color>
 </resources>

@@ -58,7 +58,8 @@
         android:textSize="24sp"
         android:fontFamily="@font/poppinsbold"
         android:background="@drawable/button_shape"
-        android:id="@+id/txtlogin"/>
+        android:id="@+id/txtlogin"
+        android:onClick="NavigateToLogin"/>
 
 
 

@@ -1,5 +1,6 @@
 package com.example.smartpanel
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -16,5 +17,9 @@ class login : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+    fun navigateToDashboard(view: android.view.View) {
+        val intent = Intent(this, LampActivity::class.java)
+        startActivity(intent)
     }
 }

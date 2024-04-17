@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradasi_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <View
+        android:id="@+id/top_shape"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textColor="@color/white"
+        android:layout_marginStart="70dp"
+        android:textSize="25sp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="serif">
+    </TextView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/lamp"
+        android:background="@drawable/button_shape">
+    </Button>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="90dp"
+        android:text="@string/temperature"
+        android:background="@drawable/button_shape">
+    </Button>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_shape"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="24dp"
+        android:columnCount="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="360dp"
+            android:layout_height="250dp"
+            app:cardBackgroundColor="@color/brown"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textcard1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/room1"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iconlamp"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icon_lamp_off"/>
+
+                <Switch
+                    android:id="@+id/switchlamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="270dp"
+                    android:layout_marginTop="10dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track"
+                    android:scaleX="2"
+                    android:scaleY="2"
+                    android:checked="false"
+                    android:enabled="true"
+                    tools:ignore="UseSwitchCompatOrMaterialXml"/>
+            </LinearLayout>
+
+
+<!--            <Spinner-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:id="@+id/colorSpinner"-->
+<!--                android:layout_marginTop="230dp">-->
+<!--            </Spinner>-->
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card2"
+            android:layout_width="360dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/brown"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textcard2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/room2"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iconlamp2"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="110dp"
+                    android:layout_marginTop="5dp"
+                    android:src="@drawable/icon_lamp_off"/>
+
+                <Switch
+                    android:id="@+id/switchlamp2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="270dp"
+                    android:layout_marginTop="10dp"
+                    android:thumb="@drawable/thumb"
+                    android:track="@drawable/track"
+                    android:scaleX="2"
+                    android:scaleY="2"
+                    android:checked="false"
+                    android:enabled="true"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </GridLayout>
+
+
+
+</RelativeLayout>
