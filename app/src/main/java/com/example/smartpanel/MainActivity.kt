@@ -3,6 +3,7 @@ package com.example.smartpanel
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -18,10 +19,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val btnLogin2 = findViewById<Button>(R.id.btnlogin2)
+        btnLogin2.setOnClickListener {
+            // Membuat Intent untuk memulai aktivitas baru
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
 
-    fun NavigateToLogin(view: View) {
-        val intent = Intent(this, login::class.java)
-        startActivity(intent)
-    }
+//    fun NavigateToLogin(view: View) {
+//        val intent = Intent(this, LoginActivity::class.java)
+//        startActivity(intent)
+//    }
 }

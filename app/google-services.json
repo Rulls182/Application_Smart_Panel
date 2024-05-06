@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "433159125464",
+    "firebase_url": "https://identity-dbb35-default-rtdb.firebaseio.com",
+    "project_id": "identity-dbb35",
+    "storage_bucket": "identity-dbb35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433159125464:android:86859a7b61e6a80f7bdaad",
+        "android_client_info": {
+          "package_name": "com.example.smartpanel"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARyAAFPnsF6_h3UWilA4Fv91fFc6lUlTQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".register">
+    tools:context="com.example.smartpanel.RegisterActivity">
 
 
     <ImageView
@@ -53,6 +53,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsmedium"
             android:hint="@string/email"
+            android:inputType="textEmailAddress"
             android:paddingStart="10dp"
             android:textColorHint="@color/tint"
             tools:ignore="RtlSymmetry" />
@@ -66,6 +67,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsmedium"
             android:hint="@string/username"
+            android:inputType="text"
             android:paddingStart="10dp"
             android:textColorHint="@color/tint"
             tools:ignore="RtlSymmetry" />
@@ -79,6 +81,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/poppinsmedium"
             android:hint="@string/password"
+            android:inputType="textPassword"
             android:paddingStart="10dp"
             android:textColorHint="@color/tint"
             tools:ignore="RtlSymmetry" />
@@ -86,7 +89,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/login2"
+        android:id="@+id/btnRegist"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/form"
@@ -103,9 +106,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/login2"
         android:gravity="center"
-        android:layout_margin="15dp" >
+        android:layout_margin="15dp">
+    <!--        android:layout_below="@+id/login2"-->
 
         <TextView
             android:layout_width="wrap_content"

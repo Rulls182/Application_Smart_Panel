@@ -7,6 +7,7 @@ import android.widget.Switch
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
+
 class LampActivity : AppCompatActivity() {
 
 
