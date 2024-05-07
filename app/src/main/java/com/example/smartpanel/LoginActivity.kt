@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -50,47 +51,31 @@ class LoginActivity : AppCompatActivity() {
                 val usernameUser = username.text.toString()
                 val passwordUser = password.text.toString()
 
-                val database = FirebaseDatabase.getInstance().getReference("users")
-
-                if (usernameUser.isEmpty() || passwordUser.isEmpty()) {
-                    Toast.makeText(this, "Username atau Password Salah", Toast.LENGTH_SHORT).show()
-                } else {
-                    database.addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            if (snapshot.child(usernameUser).exists()) {
-                                val savedPassword = snapshot.child(usernameUser).child("password")
-                                    .getValue(String::class.java)
-                                if (savedPassword == passwordUser) {
-                                    Toast.makeText(
-                                        this@LoginActivity,
-                                        "Login Berhasil",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    val masuk = Intent(this@LoginActivity, LampActivity::class.java)
-                                    startActivity(masuk)
-                                    finish()
-                                } else {
-                                    Toast.makeText(
-                                        this@LoginActivity,
-                                        "Password Salah",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
+                if (usernameUser.isNotEmpty() && passwordUser.isNotEmpty()) {
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(username.toString(),
+                        password.toString()
+                    )
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                // Login berhasil
+                                Toast.makeText(this.applicationContext, "Login Berhasil", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this.applicationContext, LampActivity::class.java)
+                                startActivity(intent)
+                                finish()
                             } else {
-                                Toast.makeText(
-                                    this@LoginActivity,
-                                    "Data Belum Terdaftar",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                // Login gagal
+                                Toast.makeText(this.applicationContext, "Gagal login: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                             }
                         }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            // Handle error
-                        }
-                    })
+                } else {
+                    // Kolom email atau password kosong
+                    Toast.makeText(this.applicationContext, "Email atau Password Kosong", Toast.LENGTH_SHORT).show()
                 }
             }
+
+
+
+
 
 
         }
