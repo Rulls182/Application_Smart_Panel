@@ -23,9 +23,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var btnRegist: Button
 
     // referensi Firebase Authentication
-    val mAuth = FirebaseAuth.getInstance()
+    private val mAuth = FirebaseAuth.getInstance()
     // referensi Firebase Database
-    val mDatabase = FirebaseDatabase.getInstance().reference
+    private val mDatabase = FirebaseDatabase.getInstance().reference
 
     @Override
     override fun onCreate(savedInstanceState: Bundle?) {

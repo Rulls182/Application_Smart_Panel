@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/gradasi_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.smartpanel.LampActivity">
 
@@ -18,10 +18,10 @@
         android:layout_height="wrap_content"
         android:text="@string/title"
         android:textColor="@color/white"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="55dp"
         android:textSize="25sp"
         android:layout_marginTop="21dp"
-        android:fontFamily="serif">
+        android:fontFamily="@font/poppinsbold">
     </TextView>
 
     <Button
@@ -30,7 +30,9 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="90dp"
         android:text="@string/lamp"
-        android:background="@drawable/button_shape">
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape_main">
     </Button>
 
     <Button
@@ -39,7 +41,9 @@
         android:layout_marginStart="130dp"
         android:layout_marginTop="90dp"
         android:text="@string/temperature"
-        android:background="@drawable/button_shape">
+        android:fontFamily="@font/poppinsbold"
+        android:textColor="@color/white"
+        android:background="@drawable/button_shape_main">
     </Button>
 
     <GridLayout

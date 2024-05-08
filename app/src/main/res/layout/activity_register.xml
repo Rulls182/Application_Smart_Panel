@@ -5,17 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/gradasi_bg"
     tools:context="com.example.smartpanel.RegisterActivity">
 
-
-    <ImageView
-        android:id="@+id/img_1"
-        android:layout_width="461dp"
-        android:layout_height="587dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="-50dp"
-        android:src="@drawable/gambar3" />
 
     <TextView
         android:id="@+id/txt1"
@@ -85,6 +77,7 @@
             android:paddingStart="10dp"
             android:textColorHint="@color/tint"
             tools:ignore="RtlSymmetry" />
+        
 
     </LinearLayout>
 
@@ -110,21 +103,6 @@
         android:layout_margin="15dp">
     <!--        android:layout_below="@+id/login2"-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/have_account"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:fontFamily="@font/poppinssemibold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:fontFamily="@font/poppinssemibold"
-            android:text="@string/login"
-            android:textColor="@color/red"
-            android:textSize="15sp" />
 
     </LinearLayout>
 

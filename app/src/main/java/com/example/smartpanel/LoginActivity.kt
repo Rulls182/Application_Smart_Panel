@@ -11,30 +11,33 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var username: EditText
+    private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var Regist: TextView
-    private lateinit var btnLogin: Button
+    private lateinit var buttonLogin: Button
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
+        auth = Firebase.auth
+
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        username = findViewById(R.id.username)
+        auth = FirebaseAuth.getInstance()
+
+        email = findViewById(R.id.email)
         password = findViewById(R.id.password)
         Regist = findViewById(R.id.Regist)
-        btnLogin = findViewById(R.id.btnLogin)
+        buttonLogin = findViewById(R.id.btnLogin)
 
         val clickableText = findViewById<TextView>(R.id.Regist)
         clickableText.setOnClickListener {
@@ -47,30 +50,18 @@ class LoginActivity : AppCompatActivity() {
                 insets
             }
 
-            btnLogin.setOnClickListener {
-                val usernameUser = username.text.toString()
+            buttonLogin.setOnClickListener {
+                val usernameUser = email.text.toString()
                 val passwordUser = password.text.toString()
 
+                print( usernameUser + passwordUser)
+
                 if (usernameUser.isNotEmpty() && passwordUser.isNotEmpty()) {
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(username.toString(),
-                        password.toString()
-                    )
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                // Login berhasil
-                                Toast.makeText(this.applicationContext, "Login Berhasil", Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this.applicationContext, LampActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                            } else {
-                                // Login gagal
-                                Toast.makeText(this.applicationContext, "Gagal login: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                            }
-                        }
+                    loginUser(email.toString(), password.toString())
                 } else {
-                    // Kolom email atau password kosong
-                    Toast.makeText(this.applicationContext, "Email atau Password Kosong", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "Email atau password kosong", Toast.LENGTH_SHORT).show()
                 }
+
             }
 
 
@@ -86,4 +77,23 @@ class LoginActivity : AppCompatActivity() {
 //            startActivity(intent)
 //        }
     }
+
+    private fun loginUser(email: String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    val user = auth.currentUser
+                    Toast.makeText(applicationContext, "Login berhasil", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, LampActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
 }
