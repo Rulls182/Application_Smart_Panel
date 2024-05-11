@@ -6,14 +6,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.smartpanel.model.LoginModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.ktx.Firebase
+import retrofit2.Call
 
 
 class LoginActivity : AppCompatActivity() {
@@ -24,12 +21,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonLogin: Button
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
-        auth = Firebase.auth
 
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
@@ -43,26 +38,41 @@ class LoginActivity : AppCompatActivity() {
         clickableText.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
+//
+//            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+//                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+//                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+//                insets
+//            }
+        }
 
-            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-                insets
-            }
+        buttonLogin.setOnClickListener {
+            val usernameUser = email.text.toString()
+            val passwordUser = password.text.toString()
 
-            buttonLogin.setOnClickListener {
-                val usernameUser = email.text.toString()
-                val passwordUser = password.text.toString()
+            val user = LoginModel(usernameUser, passwordUser)
+            val call:Call<LoginResponseData> = apiService.loginUser(user)
 
-                print( usernameUser + passwordUser)
-
-                if (usernameUser.isNotEmpty() && passwordUser.isNotEmpty()) {
-                    loginUser(email.toString(), password.toString())
-                } else {
-                    Toast.makeText(applicationContext, "Email atau password kosong", Toast.LENGTH_SHORT).show()
+            fetch(
+                call,
+                success = { response, header ->
+                    if (header != null) {
+                        if (response?.idToken !== null) {
+                            val intent = Intent(this, LampActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                            showToast("Login successful")
+                            // Save the email in SharedPreferences after successful login
+                        } else {
+                            showToast("Login failed: No data in the response")
+                        }
+                    }
+                },
+                error = { _, message ->
+                    showToast("Login failed: $message")
                 }
-
-            }
+            )
+        }
 
 
 
@@ -72,28 +82,13 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+    }
+
 //        fun navigateToDashboard(view: android.view.View) {
 //            val intent = Intent(this, LampActivity::class.java)
 //            startActivity(intent)
 //        }
-    }
-
-    private fun loginUser(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    val user = auth.currentUser
-                    Toast.makeText(applicationContext, "Login berhasil", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, LampActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(baseContext, "Authentication failed: ${task.exception?.message}",
-                        Toast.LENGTH_SHORT).show()
-                }
-            }
-    }
 
 }

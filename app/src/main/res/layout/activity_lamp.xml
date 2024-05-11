@@ -25,26 +25,24 @@
     </TextView>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="90dp"
-        android:text="@string/lamp"
+        android:background="@drawable/button_shape_main"
         android:fontFamily="@font/poppinsbold"
-        android:textColor="@color/white"
-        android:background="@drawable/button_shape_main">
-    </Button>
+        android:text="@string/lamp"
+        android:textColor="@color/white" />
 
     <Button
-        android:layout_width="150dp"
+        android:layout_width="165dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
+        android:layout_marginStart="220dp"
         android:layout_marginTop="90dp"
-        android:text="@string/temperature"
+        android:background="@drawable/button_shape_main"
         android:fontFamily="@font/poppinsbold"
-        android:textColor="@color/white"
-        android:background="@drawable/button_shape_main">
-    </Button>
+        android:text="@string/temperature"
+        android:textColor="@color/white" />
 
     <GridLayout
         android:layout_width="match_parent"
