@@ -76,7 +76,7 @@
         android:layout_marginTop="20dp"
         android:width="15dp"
         android:background="@drawable/button_shape"
-        android:fontFamily="@font/poppinssemibold"
+        android:fontFamily="@font/poppinsextra"
         android:text="@string/login"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -110,11 +110,6 @@
 
         </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonExample"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 
 
 </RelativeLayout>

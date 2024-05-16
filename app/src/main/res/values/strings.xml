@@ -15,4 +15,5 @@
     <string name="room2">Room 2</string>
     <string name="lamp">Lamp</string>
     <string name="temperature">Temperature</string>
+    <string name="suhu">20°C</string>
 </resources>

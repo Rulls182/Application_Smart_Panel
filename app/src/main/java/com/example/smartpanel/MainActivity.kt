@@ -8,6 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.Firebase
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.auth
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,11 +23,14 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        val btnLogin2 = findViewById<Button>(R.id.btnlogin2)
-        btnLogin2.setOnClickListener {
-            // Membuat Intent untuk memulai aktivitas baru
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+        var auth: FirebaseAuth = Firebase.auth
+
+        if (auth.currentUser != null){
+            val intentSuhu = Intent(this, LampActivity::class.java)
+            startActivity(intentSuhu)
+        } else{
+            val intentLogin = Intent(this, LoginActivity::class.java)
+            startActivity(intentLogin)
         }
     }
 

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradasi_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.smartpanel.LampActivity">
+
+    <View
+        android:id="@+id/top_shape"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    </View>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textColor="@color/white"
+        android:layout_marginStart="55dp"
+        android:textSize="25sp"
+        android:layout_marginTop="21dp"
+        android:fontFamily="@font/poppinsbold">
+    </TextView>
+
+    <Button
+        android:id="@+id/btnLamp"
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/button_shape_main"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/lamp"
+        android:textColor="@color/white" />
+
+    <Button
+        android:layout_width="165dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="220dp"
+        android:layout_marginTop="90dp"
+        android:background="@drawable/button_shape_main"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/temperature"
+        android:textColor="@color/white" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_shape"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginStart="24dp"
+        android:columnCount="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="360dp"
+            android:layout_height="250dp"
+            app:cardBackgroundColor="@color/brown"
+            app:cardCornerRadius="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <!-- TextView to display the result -->
+                <TextView
+                    android:id="@+id/textViewResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="130dp"
+                    android:layout_marginTop="40dp"
+                    android:text="@string/suhu"
+                    android:textSize="40sp" />
+
+                <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="70dp">
+
+                </ImageButton>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+    </GridLayout>
+
+
+
+</RelativeLayout>

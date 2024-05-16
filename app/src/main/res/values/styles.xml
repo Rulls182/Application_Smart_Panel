@@ -4,4 +4,9 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorAccent">@color/black</item>
     </style>
+
+    <style name="Theme.SmartPanel2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
 </resources>

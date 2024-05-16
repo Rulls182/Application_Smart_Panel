@@ -25,6 +25,7 @@
     </TextView>
 
     <Button
+        android:id="@+id/btnLamp"
         android:layout_width="165dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
