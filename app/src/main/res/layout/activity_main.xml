@@ -36,9 +36,6 @@
         android:layout_marginTop="62dp"
         android:gravity="center"
         android:padding="30sp" />
-<!--        android:text="@string/long_text"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="17sp" -->
 
 
     <Button
