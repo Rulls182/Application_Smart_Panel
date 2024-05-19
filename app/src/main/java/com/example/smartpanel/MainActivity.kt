@@ -17,21 +17,30 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+        val buttonLink: Button = findViewById(R.id.btnNext)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        var auth: FirebaseAuth = Firebase.auth
 
-        if (auth.currentUser != null){
-            val intentSuhu = Intent(this, LampActivity::class.java)
-            startActivity(intentSuhu)
-        } else{
-            val intentLogin = Intent(this, LoginActivity::class.java)
-            startActivity(intentLogin)
+        buttonLink.setOnClickListener {
+            // Intent untuk membuka aktivitas baru
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
+
+
+//        var auth: FirebaseAuth = Firebase.auth
+//
+//        if (auth.currentUser != null){
+//            val intentSuhu = Intent(this, LampActivity::class.java)
+//            startActivity(intentSuhu)
+//        } else{
+//            val intentLogin = Intent(this, LoginActivity::class.java)
+//            startActivity(intentLogin)
+//        }
     }
 
 //    fun NavigateToLogin(view: View) {
