@@ -5,11 +5,14 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradasi_bg"
         tools:context="com.example.smartpanel.LoginActivity">
 
-
-
+        <View
+        android:id="@+id/top_view"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/bg_view"
+        />
 
         <TextView
             android:id="@+id/txt1"
@@ -24,48 +27,51 @@
 
         <ImageView
             android:id="@+id/img_2"
-            android:layout_width="253dp"
-            android:layout_height="274dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="25dp"
             android:layout_below="@id/txt1"
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo" />
 
-        <LinearLayout
-            android:id="@+id/form"
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_below="@id/img_2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="0dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:layout_below="@id/img_2"
-            android:layout_marginTop="50dp"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_height="57dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinsmedium"
+            android:hint="@string/email"
+            android:paddingStart="10dp"
+            android:textColorHint="@color/white"
+            android:elevation="5dp"
+            tools:ignore="RtlSymmetry" />
 
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="@string/username"
-                android:paddingStart="10dp"
-                android:textColorHint="@color/tint"
-                tools:ignore="RtlSymmetry" />
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_shape"
+            android:fontFamily="@font/poppinsmedium"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:elevation="5dp"
+            android:textColorHint="@color/white"
+            tools:ignore="RtlSymmetry" />
 
-            <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="57dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/button_shape"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/poppinsmedium"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:paddingStart="10dp"
-                android:textColorHint="@color/tint"
-                tools:ignore="RtlSymmetry" />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnLogin"
@@ -76,6 +82,7 @@
         android:layout_marginTop="20dp"
         android:width="15dp"
         android:background="@drawable/button_shape"
+        android:backgroundTint="@color/cyan"
         android:fontFamily="@font/poppinsextra"
         android:text="@string/login"
         android:textColor="@color/white"
