@@ -41,7 +41,7 @@ class LoginActivity : AppCompatActivity() {
 
         val clickableText = findViewById<TextView>(R.id.Regist)
         clickableText.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, RoomActivity::class.java)
             startActivity(intent)
 //
 //            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
