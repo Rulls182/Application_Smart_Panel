@@ -88,23 +88,23 @@
 
     </GridLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="124dp"
-        android:layout_below="@+id/lamp"
-        android:layout_marginTop="330dp">
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="124dp"-->
+<!--        android:layout_below="@+id/lamp"-->
+<!--        android:layout_marginTop="330dp">-->
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@color/cyan"
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/cyan"-->
 
-            app:itemIconSize="40dp"
-            app:itemTextColor="@color/black"
-            app:menu="@menu/bottom_nav">
+<!--            app:itemIconSize="40dp"-->
+<!--            app:itemTextColor="@color/black"-->
+<!--            app:menu="@menu/bottom_nav">-->
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+<!--        </com.google.android.material.bottomnavigation.BottomNavigationView>-->
 
-    </FrameLayout>
+<!--    </FrameLayout>-->
 
 </RelativeLayout>

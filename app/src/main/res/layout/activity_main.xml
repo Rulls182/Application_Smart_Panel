@@ -58,7 +58,7 @@
         android:fontFamily="@font/poppinsbold"
         android:background="@drawable/button_shape"
         android:backgroundTint="@color/cyan"
-        android:id="@+id/btnlogin2"/>
+        android:id="@+id/btnNext"/>
 
 
 
