@@ -2,7 +2,6 @@ package com.example.smartpanel
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -41,14 +40,8 @@ class LoginActivity : AppCompatActivity() {
 
         val clickableText = findViewById<TextView>(R.id.Regist)
         clickableText.setOnClickListener {
-            val intent = Intent(this, RoomActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-//
-//            ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//                insets
-//            }
         }
 
 
