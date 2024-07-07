@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
-import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class RoomActivity : AppCompatActivity() {
@@ -43,26 +42,28 @@ class RoomActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-//                R.id.profile ->  {
-//                    startActivity(Intent(this, MainActivity::class.java))
-//                    true
-//                }
+                R.id.profile ->  {
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
 
                 R.id.home ->  {
-                    startActivity(Intent(this, RoomActivity::class.java))
+                    // Jangan buat Intent baru untuk RoomActivity
                     true
                 }
 
                 R.id.logout -> {
-                    startActivity(Intent(this, LoginActivity::class.java))
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
                     true
                 }
 
                 else -> false
             }
-
-
         }
-    }
 
+        // Atur item yang terpilih saat pertama kali masuk ke RoomActivity
+        bottomNavigationView.selectedItemId = R.id.home
+    }
 }

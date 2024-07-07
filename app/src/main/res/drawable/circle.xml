@@ -1,0 +1,21 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Layer pertama: stroke dengan warna cyan -->
+    <item>
+        <shape android:shape="oval">
+            <solid
+                android:width="8dp"
+                android:color="@color/white"/>
+            <solid android:color="@color/gray"/>
+        </shape>
+    </item>
+
+    <!-- Layer kedua: stroke dengan warna putih, lebih sempit dan berada di atas layer pertama -->
+    <item>
+        <shape android:shape="oval">
+            <stroke
+                android:width="3dp"
+                android:color="@color/cyan"/>
+            <solid android:color="@android:color/transparent"/>
+        </shape>
+    </item>
+</layer-list>

@@ -2,11 +2,13 @@ package com.example.smartpanel
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.smartpanel.RetrofitClient.retrofit
 import com.example.smartpanel.model.LoginModel
 import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
@@ -16,7 +18,6 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var email: EditText
     private lateinit var password: EditText
-    private lateinit var Regist: TextView
     private lateinit var buttonLogin: Button
     private lateinit var auth: FirebaseAuth
 
@@ -35,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
 
         email = findViewById(R.id.email)
         password = findViewById(R.id.password)
-        Regist = findViewById(R.id.Regist)
         buttonLogin = findViewById(R.id.btnLogin)
 
         val clickableText = findViewById<TextView>(R.id.Regist)
@@ -45,9 +45,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
-        buttonLogin.setOnClickListener {
-            val emailUser = email.text.toString().trim()
-            val passwordUser = password.text.toString().trim()
+//        buttonLogin.setOnClickListener {
+//            val emailUser = email.text.toString().trim()
+//            val passwordUser = password.text.toString().trim()
 
 //            // Validate input
 //            if (email.length() == 0|| password.length() == 0) {
@@ -86,36 +86,49 @@ class LoginActivity : AppCompatActivity() {
 //            }
 //    }
 
-            buttonLogin.setOnClickListener {
-                val usernameUser = email.text.toString()
-                val passwordUser = password.text.toString()
+        val apiService = retrofit.create(ApiService::class.java)
 
-                val user = LoginModel(usernameUser, passwordUser)
-                val call: Call<LoginResponseData> = apiService.loginUser(user)
+        buttonLogin.setOnClickListener {
+            val usernameUser = email.text.toString()
+            val passwordUser = password.text.toString()
 
-                fetch(
-                    call,
-                    success = { response, header ->
-                        if (header != null) {
-                            if (response?.idToken !== null) {
-                                val intent = Intent(this, RoomActivity::class.java)
-                                startActivity(intent)
-                                finish()
-                                showToast("Login successful")
-                                // Save the email in SharedPreferences after successful login
-                            } else {
-                                showToast("Login failed: No data in the response")
-                            }
-                        }
-                    },
-                    error = { _, message ->
-                        showToast("Login failed: $message")
-                    }
-                )
+            if (usernameUser.isEmpty() || passwordUser.isEmpty()) {
+                showToast("Email and password must not be empty")
+                return@setOnClickListener
             }
+
+            val user = LoginModel(usernameUser, passwordUser)
+            val call: Call<LoginResponseData> = apiService.loginUser(user)
+
+            fetch(
+                call,
+                success = { response, header ->
+                    Log.d("LoginResponse", "Response: $response, Header: $header")
+                    if (header != null) {
+                        if (response?.idToken != null) {
+                            val intent = Intent(this, RoomActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                            showToast("Login successful")
+                            // Save the email in SharedPreferences after successful login
+                        } else {
+                            showToast("Login failed: No idToken in the response")
+                        }
+                    } else {
+                        showToast("Login failed: No header in the response")
+                    }
+                },
+                error = { _, message ->
+                    showToast("Login failed: $message")
+                    Log.e("LoginError", "Error message: $message")
+                }
+            )
         }
+
+
     }
 }
+
 
 
 
