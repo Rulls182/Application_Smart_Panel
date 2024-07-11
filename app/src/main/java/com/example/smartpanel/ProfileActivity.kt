@@ -3,17 +3,25 @@ package com.example.smartpanel
 import ChoosePict
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var profileImage: ImageView
     private lateinit var choosePhotoButton: ImageButton
+    private lateinit var editPhotoButton: ImageButton
+    private lateinit var emailTextView: TextView
+    private lateinit var usernameTextView: TextView
     private lateinit var choosePict: ChoosePict
+    private lateinit var database: DatabaseReference
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,35 +29,63 @@ class ProfileActivity : AppCompatActivity() {
 
         profileImage = findViewById(R.id.profile_image)
         choosePhotoButton = findViewById(R.id.button_choose_photo)
+        editPhotoButton = findViewById(R.id.button_edit_photo)
+        emailTextView = findViewById(R.id.textEmail)
+        usernameTextView = findViewById(R.id.textUsername)
 
-        choosePict = ChoosePict(this, profileImage, choosePhotoButton)
-
+        choosePict = ChoosePict(this, profileImage, choosePhotoButton, editPhotoButton)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.profile ->  {
-                    true
-                }
-
-                R.id.home ->  {
+                R.id.profile -> true
+                R.id.home -> {
                     val intent = Intent(this, RoomActivity::class.java)
                     startActivity(intent)
                     true
                 }
-
                 R.id.logout -> {
                     val intent = Intent(this, LoginActivity::class.java)
                     startActivity(intent)
                     true
                 }
-
                 else -> false
             }
         }
 
-        // Atur item yang terpilih saat pertama kali masuk ke RoomActivity
+        // Mengatur item yang terpilih saat pertama kali masuk ke ProfileActivity
         bottomNavigationView.selectedItemId = R.id.profile
+
+        // Inisialisasi Realtime Database
+        database = FirebaseDatabase.getInstance().reference
+
+        fetchUserData()
+    }
+
+    // Fungsi untuk mengambil data user dari Realtime Database
+    private fun fetchUserData() {
+        val user = auth.currentUser
+        if (user != null) {
+            val email = user.email
+            database.child("users").child(user.uid).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        val username = snapshot.child("username").getValue(String::class.java)
+                        emailTextView.text = email
+                        usernameTextView.text = username
+                        Log.d("ProfileActivity", "Username: $username, Email: $email")
+                    } else {
+                        Log.d("ProfileActivity", "No such document")
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("ProfileActivity", "get failed with ", error.toException())
+                }
+            })
+        } else {
+            Log.d("ProfileActivity", "User is null")
+        }
     }
 
     // Menangani hasil dari memilih foto
@@ -58,7 +94,3 @@ class ProfileActivity : AppCompatActivity() {
         choosePict.onActivityResult(requestCode, resultCode, data)
     }
 }
-
-
-
-

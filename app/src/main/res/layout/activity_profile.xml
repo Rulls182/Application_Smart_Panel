@@ -58,10 +58,27 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/profile_image" />
+
+        <ImageButton
+            android:id="@+id/button_edit_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Edit atau Hapus Foto"
+            android:src="@drawable/ic_edit"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+            app:layout_constraintEnd_toEndOf="@+id/profile_image"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="@+id/profile_image"
+            app:layout_constraintTop_toTopOf="@+id/profile_image"
+            app:layout_constraintVertical_bias="0.913">
+        </ImageButton>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/lamp"
+        android:id="@+id/card"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="25dp"
@@ -97,22 +114,26 @@
                     android:layout_marginStart="22dp"
                     android:layout_marginTop="16dp"
                     android:src="@drawable/ic_user_profile"
-                    app:layout_constraintEnd_toStartOf="@+id/text1"
+                    app:layout_constraintEnd_toStartOf="@+id/textUsername"
+                    app:layout_constraintHeight_default="wrap"
+                    app:layout_constraintHorizontal_bias="0.409"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_default="wrap" />
 
                 <TextView
-                    android:id="@+id/text1"
+                    android:id="@+id/textUsername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
-                    android:layout_marginEnd="118dp"
-                    android:text="Group Smart Panel"
+                    android:layout_marginEnd="182dp"
+                    android:text="Username"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -121,24 +142,26 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="12dp"
                     android:src="@drawable/ic_email"
-                    app:layout_constraintEnd_toStartOf="@+id/text2"
-                    app:layout_constraintHorizontal_bias="0.535"
+                    app:layout_constraintEnd_toStartOf="@+id/textEmail"
+                    app:layout_constraintHeight_default="wrap"
+                    app:layout_constraintHorizontal_bias="0.517"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/imageView"
+                    app:layout_constraintWidth_default="wrap" />
 
                 <TextView
-                    android:id="@+id/text2"
+                    android:id="@+id/textEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
-                    android:text="smartpanel@gmail.com"
+                    android:layout_marginTop="28dp"
+                    android:text="email"
                     android:textColor="@color/white"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.497"
+                    app:layout_constraintHorizontal_bias="0.268"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text1" />
+                    app:layout_constraintTop_toBottomOf="@id/textUsername" />
 
                 <ImageView
                     android:layout_width="40dp"
@@ -167,7 +190,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.342"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/text2"
+                    app:layout_constraintTop_toBottomOf="@id/textEmail"
                     app:layout_constraintVertical_bias="0.647" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

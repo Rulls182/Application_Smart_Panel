@@ -1,8 +1,8 @@
 plugins {
-//    alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("com.android.application")
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -38,7 +38,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -47,6 +46,7 @@ dependencies {
     implementation("com.google.firebase:firebase-database-ktx:21.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -56,5 +56,9 @@ dependencies {
     implementation("com.google.android.gms:play-services-auth:21.1.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.5.0")
-
+    implementation("androidx.activity:activity-ktx:1.2.0")
+    implementation("androidx.fragment:fragment-ktx:1.3.0")
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    kapt("com.github.bumptech.glide:compiler:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 }

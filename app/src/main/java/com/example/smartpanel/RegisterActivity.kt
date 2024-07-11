@@ -54,7 +54,8 @@ class RegisterActivity : AppCompatActivity() {
                     if (userId != null) {
                         val userMap = hashMapOf<String, Any>(
                             "email" to email,
-                            "username" to username
+                            "username" to username,
+                            "password" to password
                         )
                         databaseReference.child(userId).setValue(userMap)
                             .addOnCompleteListener { databaseTask ->
