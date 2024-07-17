@@ -1,6 +1,7 @@
 package com.example.smartpanel
 
 import ChoosePict
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class ProfileActivity : AppCompatActivity() {
@@ -21,7 +21,6 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var usernameTextView: TextView
     private lateinit var choosePict: ChoosePict
     private lateinit var database: DatabaseReference
-    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,24 +52,21 @@ class ProfileActivity : AppCompatActivity() {
             }
         }
 
-        // Mengatur item yang terpilih saat pertama kali masuk ke ProfileActivity
         bottomNavigationView.selectedItemId = R.id.profile
-
-        // Inisialisasi Realtime Database
         database = FirebaseDatabase.getInstance().reference
-
         fetchUserData()
     }
 
-    // Fungsi untuk mengambil data user dari Realtime Database
     private fun fetchUserData() {
-        val user = auth.currentUser
-        if (user != null) {
-            val email = user.email
-            database.child("users").child(user.uid).addListenerForSingleValueEvent(object : ValueEventListener {
+        val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+        val uid = sharedPreferences.getString("uid", null)
+
+        if (uid != null) {
+            database.child("users").child(uid).addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (snapshot.exists()) {
                         val username = snapshot.child("username").getValue(String::class.java)
+                        val email = snapshot.child("email").getValue(String::class.java)
                         emailTextView.text = email
                         usernameTextView.text = username
                         Log.d("ProfileActivity", "Username: $username, Email: $email")
@@ -84,11 +80,10 @@ class ProfileActivity : AppCompatActivity() {
                 }
             })
         } else {
-            Log.d("ProfileActivity", "User is null")
+            Log.d("ProfileActivity", "UID is null")
         }
     }
 
-    // Menangani hasil dari memilih foto
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         choosePict.onActivityResult(requestCode, resultCode, data)

@@ -30,21 +30,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
-
-
-//        var auth: FirebaseAuth = Firebase.auth
-//
-//        if (auth.currentUser != null){
-//            val intentSuhu = Intent(this, LampActivity::class.java)
-//            startActivity(intentSuhu)
-//        } else{
-//            val intentLogin = Intent(this, LoginActivity::class.java)
-//            startActivity(intentLogin)
-//        }
     }
-
-//    fun NavigateToLogin(view: View) {
-//        val intent = Intent(this, LoginActivity::class.java)
-//        startActivity(intent)
-//    }
 }

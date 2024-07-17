@@ -1,5 +1,6 @@
 package com.example.smartpanel
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,7 +17,7 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var email: EditText
+    private lateinit var identifier: EditText
     private lateinit var password: EditText
     private lateinit var buttonLogin: Button
 
@@ -24,7 +25,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        email = findViewById(R.id.email)
+        identifier = findViewById(R.id.email)
         password = findViewById(R.id.password)
         buttonLogin = findViewById(R.id.btnLogin)
 
@@ -35,22 +36,33 @@ class LoginActivity : AppCompatActivity() {
         }
 
         buttonLogin.setOnClickListener {
-            val usernameUser = email.text.toString().trim()
-            val passwordUser = password.text.toString().trim()
+            val identifierText = identifier.text.toString().trim()
+            val passwordText = password.text.toString().trim()
 
-            if (usernameUser.isEmpty() || passwordUser.isEmpty()) {
-                showToast("Email and password must not be empty")
+            if (identifierText.isEmpty() || passwordText.isEmpty()) {
+                showToast("Email/Username and password must not be empty")
                 return@setOnClickListener
             }
 
-            val user = LoginModel(usernameUser, passwordUser)
-            val call: Call<LoginResponseData> = retrofit.create(ApiService::class.java).loginUser(user)
+            val loginModel = if (identifierText.contains("@")) {
+                LoginModel(email = identifierText, username = null, password = passwordText)
+            } else {
+                LoginModel(email = null, username = identifierText, password = passwordText)
+            }
+
+            val call: Call<LoginResponseData> = retrofit.create(ApiService::class.java).loginUser(loginModel)
 
             call.enqueue(object : Callback<LoginResponseData> {
                 override fun onResponse(call: Call<LoginResponseData>, response: Response<LoginResponseData>) {
                     if (response.isSuccessful) {
                         val responseData: LoginResponseData? = response.body()
                         showToast("Login successful")
+                        responseData?.let {
+                            val sharedPreferences = getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
+                            val editor = sharedPreferences.edit()
+                            editor.putString("uid", it.uid)
+                            editor.apply()
+                        }
                         val intent = Intent(this@LoginActivity, RoomActivity::class.java)
                         startActivity(intent)
                         finish()
