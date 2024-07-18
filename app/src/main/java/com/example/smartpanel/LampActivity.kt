@@ -39,7 +39,7 @@ class LampActivity : AppCompatActivity() {
             Toast.makeText(this@LampActivity, selectedItem.title, Toast.LENGTH_SHORT).show()
         }
 
-        // Retrieve data from the cloud for temperature and power usage
+        // Menarik data dari cloud
         database.child("sensors/temp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val temp = dataSnapshot.getValue(Int::class.java) ?: 0
@@ -76,6 +76,12 @@ class LampActivity : AppCompatActivity() {
             database.child("devices/temp_sensor").setValue(status)
         }
 
+        val switchRelay = findViewById<Switch>(R.id.switchrelay)
+        switchTemp?.setOnCheckedChangeListener { _, isChecked ->
+            val status = if (isChecked) "ON" else "OFF"
+            database.child("devices/relay").setValue(status)
+        }
+
         // button back
         val backButton = findViewById<ImageButton>(R.id.back_button)
         backButton.setOnClickListener {
@@ -83,4 +89,5 @@ class LampActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    
 }

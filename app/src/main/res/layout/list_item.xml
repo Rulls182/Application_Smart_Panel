@@ -8,15 +8,15 @@
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_width="348dp"
+        android:layout_height="205dp"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="350dp"
             android:layout_height="match_parent">
 
             <TextView
@@ -34,12 +34,13 @@
 
             <ImageView
                 android:id="@+id/iconlamp"
-                android:layout_width="141dp"
-                android:layout_height="152dp"
-                android:layout_marginTop="8dp"
+                android:layout_width="105dp"
+                android:layout_height="98dp"
+                android:layout_marginTop="4dp"
                 android:src="@drawable/icon_lamp_off"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textcard1" />
 
@@ -47,7 +48,7 @@
                 android:id="@+id/switchlamp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="16dp"
                 android:checked="false"
                 android:enabled="true"
                 android:scaleX="2"
@@ -55,7 +56,7 @@
                 android:thumb="@drawable/thumb"
                 android:track="@drawable/track"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.845"
+                app:layout_constraintHorizontal_bias="0.867"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/iconlamp"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
@@ -63,8 +64,8 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_width="350dp"
+        android:layout_height="199dp"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         app:cardCornerRadius="20dp"
@@ -78,14 +79,13 @@
                 android:id="@+id/temp"
                 android:layout_width="392dp"
                 android:layout_height="27dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="16dp"
                 android:text="Temparature"
-                android:textColor="@color/cyan"
-                android:textStyle="bold"
                 android:textAlignment="center"
+                android:textColor="@color/cyan"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -93,7 +93,7 @@
                 android:id="@+id/celcius"
                 android:layout_width="177dp"
                 android:layout_height="55dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="64dp"
                 android:text="20°C"
                 android:textAlignment="center"
                 android:textColor="@color/cyan"
@@ -108,46 +108,47 @@
                 android:id="@+id/switchtemp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="44dp"
                 android:checked="false"
                 android:enabled="true"
                 android:scaleX="2"
                 android:scaleY="2"
                 android:thumb="@drawable/thumb"
                 android:track="@drawable/track"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.867"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/celcius"
+                app:layout_constraintTop_toBottomOf="@+id/temp"
+                app:layout_constraintVertical_bias="0.795"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_width="349dp"
+        android:layout_height="207dp"
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
+            android:layout_width="386dp"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvPowerUsage"
                 android:layout_width="392dp"
                 android:layout_height="27dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="16dp"
                 android:text="Power Usage"
-                android:textColor="@color/cyan"
-                android:textStyle="bold"
                 android:textAlignment="center"
+                android:textColor="@color/cyan"
                 android:textSize="20sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.666"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -163,10 +164,27 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPowerUsage"
-                app:layout_constraintVertical_bias="0.122" />
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Switch
+                android:id="@+id/switchrelay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:enabled="true"
+                android:scaleX="2"
+                android:scaleY="2"
+                android:thumb="@drawable/thumb"
+                android:track="@drawable/track"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.786"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/volt"
+                app:layout_constraintVertical_bias="0.242"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
